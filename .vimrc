@@ -24,7 +24,6 @@ filetype off
 syntax on
 
 inoremap jk <Esc>
-noremap <Esc> <nop>
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
