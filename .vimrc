@@ -20,6 +20,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 set nocompatible
+
+" Allows buffers to be hidden if you modified a buffer
+set hidden
 filetype off
 syntax on
 
@@ -35,3 +38,16 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" Opens a new empty buffer
+nmap <leader>T :enew<CR>
+" Moves to the next buffer
+nmap <leader>l :bnext<CR>
+" Moves to the previous buffer
+nmap <leader>h :bprevious<CR>
+" Closes the current buffer, moves to the previous one
+nmap <leader>bd :bd<CR>
+" Shows all open buffers and their status
+nmap <leader>bl :ls<CR>
+" Opens the last buffer
+nnoremap <leader><leader> <C-^>
