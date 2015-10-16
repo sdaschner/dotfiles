@@ -11,7 +11,7 @@ set showmatch
 set title
 set ruler
 set et
-set number
+set relativenumber
 set incsearch
 set hlsearch
 set autoread
@@ -51,3 +51,8 @@ nmap <leader>bd :bd<CR>
 nmap <leader>bl :ls<CR>
 " Opens the last buffer
 nnoremap <leader><leader> <C-^>
+
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
