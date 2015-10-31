@@ -25,4 +25,4 @@ zle-line-finish zle-line-init zle-keymap-select () {
 }
 
 # Aliases
-source .aliases
+source ~/.aliases
