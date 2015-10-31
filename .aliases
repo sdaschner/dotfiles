@@ -1,0 +1,10 @@
+# global
+alias -g L='| less'
+alias -g G='| grep'
+
+# suffix
+alias -s pdf=mupdf
+alias -s jpg=gpicview
+
+# directories
+hash -d W=~/workspaces/
