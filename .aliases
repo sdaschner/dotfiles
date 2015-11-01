@@ -1,10 +1,15 @@
+background() {
+  "$@" &
+}
+
 # global
 alias -g L='| less'
 alias -g G='| grep'
 
 # suffix
-alias -s pdf=mupdf
-alias -s jpg=gpicview
+alias -s pdf='background mupdf'
+alias -s jpg='background gpicview'
+alias -s {ods,odt}='background libreoffice'
 
 # directories
 hash -d W=~/workspaces/
