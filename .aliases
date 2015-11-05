@@ -1,6 +1,11 @@
 background() {
-  "$@" &
+  "$@" &> /dev/null &
 }
+
+# normal
+alias mci='mvn clean install'
+alias mcit='mvn clean install -DskipTests'
+alias mcd='mvn clean deploy'
 
 # global
 alias -g L='| less'

@@ -8,11 +8,6 @@ source $ZSH/oh-my-zsh.sh
 
 echo -ne "\e]12;orange\007"
 
-# Key bindings
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey '^R' history-incremental-search-backward
-bindkey '^S' history-incremental-search-forward
-
 # Vim cursor
 zle-line-finish zle-line-init zle-keymap-select () {
     if [ $TERM != linux ]; then
@@ -24,5 +19,18 @@ zle-line-finish zle-line-init zle-keymap-select () {
     fi
 }
 
+# Expand aliases
+expand-alias-space() {
+    zle _expand_alias
+    zle self-insert
+}
+zle -N expand-alias-space
+
 # Aliases
 source ~/.aliases
+
+# Key bindings
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey " " expand-alias-space
