@@ -6,6 +6,9 @@ background() {
 alias mci='mvn clean install'
 alias mcit='mvn clean install -DskipTests'
 alias mcd='mvn clean deploy'
+alias tree='tree -a'
+alias tree2='tree -L 2'
+alias tree3='tree -L 3'
 
 # global
 alias -g L='| less'
@@ -14,7 +17,7 @@ alias -g G='| grep'
 # suffix
 alias -s pdf='background mupdf'
 alias -s jpg='background gpicview'
-alias -s {ods,odt}='background libreoffice'
+alias -s {ods,odt,doc,docx,xls,xlsx,ppt,pptx}='background libreoffice'
 
 # directories
 hash -d W=~/workspaces/
