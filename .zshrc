@@ -34,3 +34,5 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey " " expand-alias-space
+
+autoload zmv

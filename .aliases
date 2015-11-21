@@ -17,7 +17,7 @@ alias -g G='| grep'
 # suffix
 alias -s pdf='background mupdf'
 alias -s jpg='background gpicview'
-alias -s {ods,odt,doc,docx,xls,xlsx,ppt,pptx}='background libreoffice'
+alias -s {ods,odt,doc,docx,xls,xlsx,ppt,pptx,csv}='background libreoffice'
 
 # directories
 hash -d W=~/workspaces/
