@@ -6,7 +6,8 @@ background() {
 alias mci='mvn clean install'
 alias mcit='mvn clean install -DskipTests'
 alias mcd='mvn clean deploy'
-alias tree='tree -a'
+alias mgs='mvn generate-sources'
+alias tree='tree -a -I ".svn|.git|.hg"'
 alias tree2='tree -L 2'
 alias tree3='tree -L 3'
 alias l='ls -Ahl'
@@ -14,6 +15,7 @@ alias l='ls -Ahl'
 # global
 alias -g L='| less'
 alias -g G='| grep'
+alias -g Gi='| grep -i'
 
 # suffix
 alias -s {txt,adoc,md}='less'
