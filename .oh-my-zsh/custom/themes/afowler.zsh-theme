@@ -9,7 +9,7 @@ function collapse_pwd {
     echo $curr_pwd| cut -d / -f$(($relevant_slashes>0?$relevant_slashes:1))-
 }
 
-PROMPT='%m %{${fg_bold[blue]}%}:: %{$reset_color%}%{${fg[green]}%}$(collapse_pwd) $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}»%{${reset_color}%} ' #${PWD/#$HOME/~}
+PROMPT='%{${fg[green]}%}$(collapse_pwd) $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}»%{${reset_color}%} ' #${PWD/#$HOME/~}
 
 RPS1="${return_code}"
 

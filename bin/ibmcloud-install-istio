@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+istioDir=~/workspaces/oss/istio-1.1.1
+
+kubectl create namespace istio-system
+kubectl label namespace default istio-injection=enabled --overwrite
+
+helm template ${istioDir}/install/kubernetes/helm/istio-init --name istio-init --namespace istio-system \
+  > /tmp/istio-init.yaml
+kubectl apply -f /tmp/istio-init.yaml
+
+helm template ${istioDir}/install/kubernetes/helm/istio --name istio --namespace istio-system \
+  --set tracing.enabled=true \
+  --set grafana.enabled=true \
+  --set kiali.enabled=true \
+  --set kiali.createDemoSecret=true \
+  --set pilot.traceSampling=100.0 \
+  > /tmp/istio.yaml
+kubectl apply -f /tmp/istio.yaml

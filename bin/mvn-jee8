@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -e
+
+if [ "$1" = "" ]; then
+    echo "Usage: mvn-jee8 <artifact_name>"
+    exit 1
+fi
+
+artifactId=$1
+artifactPackage=${1//-/_}
+root=$folder/src/main/java
+
+mkdir -p $artifactId/src/{main,test}/{java,resources}
+mkdir -p $artifactId/src/main/java/com/sebastian_daschner/$artifactPackage
+mkdir -p $artifactId/src/main/webapp/WEB-INF
+
+cat > $artifactId/pom.xml << EOM
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sebastian-daschner</groupId>
+    <artifactId>$artifactId</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>$artifactId</finalName>
+    </build>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>
+EOM
+
+cat > $artifactId/src/main/java/com/sebastian_daschner/$artifactPackage/JAXRSConfiguration.java << EOM
+package com.sebastian_daschner.$artifactPackage;
+
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+@ApplicationPath("resources")
+public class JAXRSConfiguration extends Application {
+
+    // nothing to configure
+
+}
+EOM
+
+cat > $artifactId/src/main/webapp/WEB-INF/beans.xml << EOM
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+    bean-discovery-mode="all">
+</beans>
+EOM

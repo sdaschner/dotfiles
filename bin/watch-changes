@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" ] && [ "$2" ]
+then
+        while true
+        do
+                inotifywait -r $1
+                $2
+        done
+else
+        echo "usage: watch-changes <file> <command>"
+fi

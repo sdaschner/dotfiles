@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$1" == "" ];then
+    echo "Usage: ${0##*/} <app-name>"; exit 2
+fi
+
+kubectl logs -f $(kubectl get pods -l app=$1 --field-selector=status.phase=Running -o name) -c $1

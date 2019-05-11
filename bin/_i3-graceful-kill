@@ -1,0 +1,25 @@
+#!/bin/bash
+set -euo pipefail
+
+changedVimFocused() {
+  title=$(getFocusedTitle)
+  [[ $title == *VIM\ \+\" ]]
+}
+
+getFocusedConId() {
+  i3-msg -t get_tree | jq 'recurse | objects | select(.type=="con" and .focused==true) | .id'
+}
+
+getFocusedTitle() {
+  id=$(getFocusedConId)
+  i3-msg -t get_tree | jq "recurse | objects | select(.id == $id) | .name"
+}
+
+killFocusedContainer() {
+  id=$(getFocusedConId)
+  i3-msg "[con_id=\"$id\"]" kill
+}
+
+if ! changedVimFocused; then
+  killFocusedContainer
+fi

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+warFile=$(ls target/*.war)
+
+if [ "$warFile" == "" ]; then
+    warFile=target/*.war
+fi
+
+cat > Dockerfile << EOM
+FROM sdaschner/open-liberty:javaee8-jdk11-b5
+
+COPY $warFile \$DEPLOYMENT_DIR
+EOM

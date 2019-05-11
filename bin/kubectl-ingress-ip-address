@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "$1" == "" ]]; then
+  echo "Usage: ${0##*/} <ingress>"; exit 2
+fi
+
+set -euo pipefail
+
+kubectl get ingress $1 -o jsonpath='{.status.loadBalancer.ingress[0].ip}'

@@ -1,0 +1,6 @@
+# direnv
+.envrc
+.java-version
+
+# PIDs
+.attach_pid*

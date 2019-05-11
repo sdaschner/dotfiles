@@ -1,0 +1,80 @@
+#!/bin/bash
+
+function usage() {
+  >&2 echo "Usage:"
+  >&2 echo "${0##*/} <cluster-name>"
+  >&2 echo "OR"
+  >&2 echo "${0##*/} -f <cluster-config-zip>"
+}
+
+function downloadAddCluster() {
+  context=$1
+
+  ibmcloud cs cluster-config $context
+
+  certAuthFilePath=$(ls ~/.bluemix/plugins/container-service/clusters/${context}/*.pem)
+  clusterConfigYamlPath=$(ls ~/.bluemix/plugins/container-service/clusters/${context}/*.yml)
+
+  addClusterContext $clusterConfigYamlPath $certAuthFilePath
+}
+
+function unzipAddCluster() {
+  zipFile=$1
+
+  unzip "$zipFile" -d ~/.bluemix/plugins/container-service/clusters/
+
+  certAuthFile=$(unzip -Z1 "$zipFile" | sed '2q;d')
+  clusterConfigYaml=$(unzip -Z1 "$zipFile" | sed '3q;d')
+
+  certAuthFilePath=~/.bluemix/plugins/container-service/clusters/${certAuthFile}
+  clusterConfigYamlPath=~/.bluemix/plugins/container-service/clusters/${clusterConfigYaml}
+
+  addClusterContext $clusterConfigYamlPath $certAuthFilePath
+}
+
+function addClusterContext() {
+  clusterConfigYamlPath=$1
+  certAuthFilePath=$2
+
+  context=$(yq -r '."current-context"' $clusterConfigYamlPath)
+  server=$(yq -r '.clusters[0].cluster.server' $clusterConfigYamlPath)
+
+  authProvider=$(yq -r '.users[0].user."auth-provider".name' $clusterConfigYamlPath)
+  authProvider=$(yq -r '.users[0].user."auth-provider".name' $clusterConfigYamlPath)
+  idpIssuerURL=$(yq -r '.users[0].user."auth-provider".config."idp-issuer-url"' $clusterConfigYamlPath)
+  clientId=$(yq -r '.users[0].user."auth-provider".config."client-id"' $clusterConfigYamlPath)
+  clientSecret=$(yq -r '.users[0].user."auth-provider".config."client-secret"' $clusterConfigYamlPath)
+  idToken=$(yq -r '.users[0].user."auth-provider".config."id-token"' $clusterConfigYamlPath)
+  refreshToken=$(yq -r '.users[0].user."auth-provider".config."refresh-token"' $clusterConfigYamlPath)
+
+  kubectl config set-cluster $context --server=$server --certificate-authority=$certAuthFilePath
+  kubectl config set-context $context --cluster=$context
+
+  kubectl config set-credentials $context \
+     --auth-provider=$authProvider \
+     --auth-provider-arg=idp-issuer-url=$idpIssuerURL \
+     --auth-provider-arg=client-id=$clientId \
+     --auth-provider-arg=client-secret=$clientSecret \
+     --auth-provider-arg=refresh-token=$refreshToken \
+     --auth-provider-arg=id-token=$idToken
+
+  kubectl config set-context $context --user=$context --namespace=default
+  kubectl config use-context $context
+}
+
+
+
+if [[ "$1" == "" ]]; then
+  usage; exit 2
+fi
+if [[ "$1" == "-f" && ! -e $2 ]]; then
+  usage; exit 2
+fi
+
+set -euo pipefail
+
+if [[ "$1" != "-f" ]]; then
+  downloadAddCluster $1
+else 
+  unzipAddCluster "$2"
+fi 

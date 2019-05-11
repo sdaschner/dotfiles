@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+kubectl get services -n istio-system istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}'

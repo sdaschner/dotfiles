@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+kubectl get services -n ingress-nginx ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}'

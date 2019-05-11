@@ -1,0 +1,34 @@
+#!/bin/bash
+set -eu
+
+function deleteServices() {
+  echo deleting all services
+  # except kubernetes
+  #kubectl delete --namespace default $(kubectl get services --field-selector='metadata.name!=kubernetes' -o name)
+  kubectl get services --field-selector='metadata.name!=kubernetes' -o name | xargs -r -I1 kubectl delete --namespace default 1
+}
+
+function deleteResourceType() {
+  echo deleting all $1
+  kubectl delete $1 --all --namespace default
+}
+
+echo deleting all resources in namespace default
+
+# kubernetes
+deleteServices
+deleteResourceType ingresses
+deleteResourceType deployment
+deleteResourceType pods
+deleteResourceType configmaps
+
+# istio v2
+#deleteResourceType routerules
+#deleteResourceType destinationpolicies
+
+# istio v3
+deleteResourceType virtualservices
+deleteResourceType destinationrules
+deleteResourceType gateways
+deleteResourceType serviceentries
+deleteResourceType policies

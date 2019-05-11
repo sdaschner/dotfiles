@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ "$1" == "" ]]; then
+  echo "Usage: ${0##*/} <file.adoc>"; exit 2
+fi
+
+file=/tmp/tmp.html
+
+asciidoctor $1 -a source-highlighter=coderay -o $file
+chromium $file &

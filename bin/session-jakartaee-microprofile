@@ -1,0 +1,24 @@
+#!/bin/bash
+set -eu
+
+# just as an example, how I prepare my presentation setup automatically
+
+presentation-mode slides
+
+i3-msg 'workspace 1; exec chromium https://jakarta.ee https://microprofile.io https://istio.io http://localhost:3000/ http://localhost:16686;'
+sleep 2
+i3-msg 'fullscreen;'
+sleep 1
+
+i3-msg 'workspace 2; exec urxvt -cd ~/workspaces/sdaschner/coffee'
+sleep 0.2
+i3-msg 'exec urxvt -cd ~/workspaces/sdaschner/coffee'
+sleep 0.2
+
+i3-msg 'workspace 4; exec urxvt -cd ~/workspaces/sdaschner/coffee/presentation;'
+sleep 1
+i3-msg 'fullscreen;'
+sleep 2
+
+i3-msg 'workspace 3; exec start-intellij ~/workspaces/sdaschner/coffee;'
+sleep 2

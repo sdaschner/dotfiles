@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+# work in progress ...
+
+if [ "$1" == "" ]; then
+    echo "Usage: watch-process-exit <process-name>"
+    exit 1
+fi
+
+while true
+do
+
+    while
+        sleep 1
+        echo "waiting for process to start"
+        [[ "$(pidof $1)" == "" ]]
+    do
+        :
+    done
+
+    while
+        sleep 1
+        echo "waiting for process to exit"
+        [[ "$(pidof $1)" != "" ]]
+    do
+        :
+    done
+
+    echo "executing action"
+done
