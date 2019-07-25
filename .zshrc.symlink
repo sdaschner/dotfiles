@@ -41,3 +41,8 @@ eval $(keychain --eval --quiet)
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# load aliases
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
+fi

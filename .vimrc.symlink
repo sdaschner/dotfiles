@@ -61,19 +61,17 @@ filetype plugin indent on
 " something messes up this setting in the plugins
 set expandtab
 
-
-
-let mapleader = "\<Space>"
-
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
-
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
+
+let mapleader = "\<Space>"
+
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
 " presentation mode
 noremap <Left> :silent bp<CR> :redraw!<CR>
