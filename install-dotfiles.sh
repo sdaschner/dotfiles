@@ -23,7 +23,7 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 install_dotfiles
 
 #setup oh-my-zsh
-# git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
+git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
 cd ~/.oh-my-zsh/custom/plugins
 
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
