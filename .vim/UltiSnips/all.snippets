@@ -5,7 +5,34 @@ endsnippet
 # place your snippets here
 # ...
 
+
+# symbols
+snippet .- "• " w
+• 
+endsnippet
+
+snippet .v "✓" w
+✓
+endsnippet
+
+snippet coffee "☕" w
+☕
+endsnippet
+
+
 # functions
 snippet dateg "Date (German format)" w
 `!v strftime("%d.%m.%Y")`
+endsnippet
+
+snippet unix "Unix timestamp" w
+`date +%s`
+endsnippet
+
+snippet file "file name" w
+`!v expand('%:t')`
+endsnippet
+
+snippet path "absolute file path" w
+`!v expand('%:p')`
 endsnippet

@@ -59,6 +59,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id sudo -n backlight-up
 # screenshot
 bindsym $mod+Home exec "sleep 0.1; scrot -e 'mv $f /tmp/'"
 bindsym $mod+Shift+Home exec "sleep 0.1; scrot -s -e 'mv $f /tmp/'"
+bindsym $mod+Mod1+Home exec "_i3-screencast-active-window $(xdotool getactivewindow)"
 
 # change focus
 bindsym $mod+h focus left
@@ -150,6 +151,12 @@ bindsym $mod+Mod1+Shift+j move workspace to output down
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
+# keyboard layout
+bindsym $mod+grave exec "_switch-keyboard"
+bindsym $mod+Shift+grave exec "_switch-keyboard-default"
+bindsym $mod+Cyrillic_io exec "_switch-keyboard"
+bindsym $mod+Shift+Cyrillic_io exec "_switch-keyboard-default"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -222,3 +229,4 @@ bindsym $mod+Shift+Escape mode "$mode_system"
 
 # rules
 for_window [class="pinentry"] floating enable
+for_window [class="fullscreen"] fullscreen enable

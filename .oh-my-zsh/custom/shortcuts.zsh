@@ -28,6 +28,11 @@ print-current-date() {
 }
 zle -N print-current-date
 
+# prints the current Unix timestamp
+print-unix-timestamp() {
+  LBUFFER+=$(date +%s)
+}
+zle -N print-unix-timestamp
 
 # appends the clipboard contents to the buffer
 vi-append-clip-selection() {
@@ -41,6 +46,7 @@ bindkey '^K' clear-ls-all
 bindkey '^J' clear-tree-2
 bindkey '^H' clear-tree-3
 bindkey '^T' print-current-date
+bindkey '^[^T' print-unix-timestamp
 
 # bind for all, incl. VIM mode
 bindkey -a "^O" copybuffer

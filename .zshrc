@@ -1,7 +1,7 @@
 export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="afowler"
-plugins=(git vi-mode kubectl oc copybuffer)
+plugins=(git vi-mode oc copybuffer kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -31,13 +31,10 @@ bindkey '^S' history-incremental-search-forward
 stty start undef
 stty stop undef
 setopt noflowcontrol
+setopt extendedglob
 
 autoload zmv
 
 
 # start ssh-agent w/ git ssh key
 eval $(keychain --eval --quiet)
-
-
-# direnv
-eval "$(direnv hook zsh)"

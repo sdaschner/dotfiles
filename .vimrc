@@ -10,7 +10,7 @@ set showmatch
 set title
 set ruler
 set et
-set relativenumber
+set number relativenumber
 set incsearch
 set hlsearch
 set autoread
@@ -20,7 +20,11 @@ set nowritebackup
 set noswapfile
 set nocompatible
 " title required for i3 status checking, modified indicator at end
+"set titlestring=%t%(\ \(%F\)%)%a\ -\ VIM%(\ %M%)
 set titlestring=%(%F%)%a\ -\ VIM%(\ %M%)
+set t_Co=16
+" undo cursorlinenr underline (was introduced Aug '19)
+hi CursorLineNr cterm=bold
 
 " allows buffers to be hidden if you modified a buffer
 set hidden
@@ -39,6 +43,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 " UltiSnips for completion / templating
 Plugin 'SirVer/ultisnips'
@@ -78,8 +85,9 @@ noremap <Down> <NOP>
 " presentation mode
 noremap <Left> :silent bp<CR> :redraw!<CR>
 noremap <Right> :silent bn<CR> :redraw!<CR>
-nmap <F5> :set relativenumber! showmode! showcmd! hidden! ruler!<CR>
+nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler!<CR>
 nmap <F2> :call DisplayPresentationBoundaries()<CR>
+nmap <F3> :call FindExecuteCommand()<CR>
 
 " jump to slides
 nmap <F9> :call JumpFirstBuffer()<CR> :redraw!<CR>
@@ -118,8 +126,8 @@ nnoremap <leader><leader> <C-^>
 " adds a line of <
 nmap <leader>a :normal 20i<<CR>
 " makes Ascii art font
-nmap <leader>F :.!toilet -w 200 -f slant<CR>
-nmap <leader>f :.!toilet -w 200 -f smslant<CR>
+nmap <leader>F :.!toilet -w 200 -f standard<CR>
+nmap <leader>f :.!toilet -w 200 -f small<CR>
 " makes Ascii border
 nmap <leader>1 :.!toilet -w 200 -f term -F border<CR>
 
@@ -151,6 +159,9 @@ highlight Search ctermfg=grey ctermbg=red
 
 " removes search highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" execute command
+nmap <leader><Enter> !!zsh<CR>
 
 " AsciiDoc preview
 nmap <leader>v :!asciidoc-view %<CR><CR>
@@ -216,6 +227,8 @@ function! s:AutoSource()
             execute 'source' fnameescape(l:filespec)
         endif
     endfor
+
+    call FindExecuteCommand()
 endfunction
 augroup AutoSource
     autocmd! BufNewFile,BufRead * call <SID>AutoSource()
@@ -262,5 +275,15 @@ function! DisplayPresentationBoundaries()
     match lastoflines /\%23l/
     set colorcolumn=80
     let g:presentationBoundsDisplayed = 1
+  endif
+endfunction
+
+function! FindExecuteCommand()
+  let line = search('\S*!'.'!:.*')
+  if line > 0
+    let command = substitute(getline(line), "\S*!"."!:*", "", "")
+    execute "silent !". command
+    execute "normal gg0"
+    redraw
   endif
 endfunction

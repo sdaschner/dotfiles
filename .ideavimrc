@@ -30,3 +30,6 @@ nmap <leader>h :action PreviousTab<CR>
 nmap <leader>l :action NextTab<CR>
 nmap <leader>bd :action CloseEditor<CR>
 nnoremap <leader><leader> <C-Tab>
+
+" extensions
+set surround
