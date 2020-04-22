@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+
+istioctl manifest apply --set profile=demo > /tmp/istio.yaml
+kubectl delete -f /tmp/istio.yaml --ignore-not-found

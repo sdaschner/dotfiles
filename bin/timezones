@@ -19,5 +19,6 @@ printDate "Los Ang." America/Los_Angeles
 printDate "New York" America/New_York
 printDate "London" Europe/London
 printDate "Berlin" Europe/Berlin
+printDate "Moscow" Europe/Moscow 
 printDate "Bangkok" Asia/Bangkok
 printDate "Tokyo" Asia/Tokyo

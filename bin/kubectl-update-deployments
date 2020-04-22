@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [[ "$1" == "" ]]; then
+  namespace="default"
+else
+  namespace=$1
+fi
+
+set -euo pipefail
+
+deployments=$(kubectl -n $namespace get deployment -o jsonpath='{.items[*].metadata.name}')
+
+echo "refreshing all pods in namespace $namespace"
+
+for deployment in $deployments ; do
+
+    termSecs=$(kubectl -n $namespace get deployment $deployment -o jsonpath='{.spec.template.spec.terminationGracePeriodSeconds}')
+    if [ "$termSecs" -eq 30 ]; then
+        termSecs='31'
+    else
+        termSecs='30'
+    fi
+
+    patch="{\"spec\":{\"template\":{\"spec\":{\"terminationGracePeriodSeconds\":$termSecs}}}}"
+
+    kubectl -n $namespace patch deployment $deployment -p $patch
+done

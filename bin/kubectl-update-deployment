@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [[ "$1" == "" ]]; then
+  echo "Usage: ${0##*/} <deployment> [<namespace>]" exit 2
+fi
+deployment=$1
+
+if [[ "$2" == "" ]]; then
+  namespace="default"
+else
+  namespace=$2
+fi
+
+set -euo pipefail
+
+echo "refreshing $deployment pods in namespace $namespace"
+
+termSecs=$(kubectl -n $namespace get deployment $deployment -o jsonpath='{.spec.template.spec.terminationGracePeriodSeconds}')
+if [ "$termSecs" -eq 30 ]; then
+    termSecs='31'
+else
+    termSecs='30'
+fi
+
+patch="{\"spec\":{\"template\":{\"spec\":{\"terminationGracePeriodSeconds\":$termSecs}}}}"
+
+kubectl -n $namespace patch deployment $deployment -p $patch

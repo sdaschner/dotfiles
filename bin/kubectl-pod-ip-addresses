@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+kubectl get pods --all-namespaces -o go-template='{{range .items}}{{.metadata.namespace}}/{{.metadata.name}}: {{.status.podIP}}{{printf "\n"}}{{end}}'

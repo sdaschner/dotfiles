@@ -1,16 +1,26 @@
 #!/bin/bash
 set -eu
 
+crds=$(kubectl get customresourcedefinitions.apiextensions.k8s.io --output "custom-columns=name:metadata.name" --no-headers)
+
 function deleteServices() {
   echo deleting all services
   # except kubernetes
-  #kubectl delete --namespace default $(kubectl get services --field-selector='metadata.name!=kubernetes' -o name)
   kubectl get services --field-selector='metadata.name!=kubernetes' -o name | xargs -r -I1 kubectl delete --namespace default 1
 }
 
 function deleteResourceType() {
   echo deleting all $1
   kubectl delete $1 --all --namespace default
+}
+
+function deleteCustomResourceType() {
+  if [[ $crds == *"${1}"* ]]; then
+    echo deleting all $1
+    kubectl delete $1 --all --namespace default
+  else
+    echo the CRD $1 is not installed
+  fi
 }
 
 echo deleting all resources in namespace default
@@ -22,13 +32,9 @@ deleteResourceType deployment
 deleteResourceType pods
 deleteResourceType configmaps
 
-# istio v2
-#deleteResourceType routerules
-#deleteResourceType destinationpolicies
-
 # istio v3
-deleteResourceType virtualservices
-deleteResourceType destinationrules
-deleteResourceType gateways
-deleteResourceType serviceentries
-deleteResourceType policies
+deleteCustomResourceType "virtualservices.networking.istio.io"
+deleteCustomResourceType "destinationrules.networking.istio.io"
+deleteCustomResourceType "gateways.networking.istio.io"
+deleteCustomResourceType "serviceentries.networking.istio.io"
+deleteCustomResourceType "policies.authentication.istio.io"

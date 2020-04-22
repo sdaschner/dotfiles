@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export IKS_BETA_VERSION=1
+
 function usage() {
   >&2 echo "Usage:"
   >&2 echo "${0##*/} <cluster-name>"
@@ -10,12 +12,7 @@ function usage() {
 function downloadAddCluster() {
   context=$1
 
-  ibmcloud cs cluster-config $context
-
-  certAuthFilePath=$(ls ~/.bluemix/plugins/container-service/clusters/${context}/*.pem)
-  clusterConfigYamlPath=$(ls ~/.bluemix/plugins/container-service/clusters/${context}/*.yml)
-
-  addClusterContext $clusterConfigYamlPath $certAuthFilePath
+  ibmcloud cs cluster config --cluster $context
 }
 
 function unzipAddCluster() {
@@ -28,13 +25,6 @@ function unzipAddCluster() {
 
   certAuthFilePath=~/.bluemix/plugins/container-service/clusters/${certAuthFile}
   clusterConfigYamlPath=~/.bluemix/plugins/container-service/clusters/${clusterConfigYaml}
-
-  addClusterContext $clusterConfigYamlPath $certAuthFilePath
-}
-
-function addClusterContext() {
-  clusterConfigYamlPath=$1
-  certAuthFilePath=$2
 
   context=$(yq -r '."current-context"' $clusterConfigYamlPath)
   server=$(yq -r '.clusters[0].cluster.server' $clusterConfigYamlPath)

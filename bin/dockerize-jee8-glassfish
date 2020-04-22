@@ -7,7 +7,7 @@ if [ "$warFile" == "" ]; then
 fi
 
 cat > Dockerfile << EOM
-FROM open-liberty:javaee8-java12
+FROM airhacks/glassfish:v5.0
 
-COPY $warFile /config/dropins/
+COPY $warFile \$GLASSFISH_HOME/glassfish/domains/domain1/autodeploy/
 EOM
