@@ -1,0 +1,7 @@
+<templateSet group="sdaschner_Java_FX">
+  <template name="fxm" value="@javafx.fxml.FXML&#10;$END$" description="Inject a JavaFX object" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+</templateSet>

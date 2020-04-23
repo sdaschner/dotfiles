@@ -1,0 +1,24 @@
+<application>
+  <component name="TemplateSettings">
+    <option name="deletedKeys">
+      <list>
+        <TemplateKey>
+          <option name="groupName" value="plain" />
+          <option name="key" value="psf" />
+        </TemplateKey>
+        <TemplateKey>
+          <option name="groupName" value="plain" />
+          <option name="key" value="prsf" />
+        </TemplateKey>
+        <TemplateKey>
+          <option name="groupName" value="plain" />
+          <option name="key" value="psfi" />
+        </TemplateKey>
+        <TemplateKey>
+          <option name="groupName" value="plain" />
+          <option name="key" value="psfs" />
+        </TemplateKey>
+      </list>
+    </option>
+  </component>
+</application>

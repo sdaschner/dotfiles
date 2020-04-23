@@ -1,0 +1,282 @@
+<templateSet group="sdaschner_Kubernetes">
+  <template name="kcs" value="kind: Service&#10;apiVersion: v1&#10;metadata:&#10;  name: $NAME$&#10;  labels:&#10;    app: $NAME$&#10;spec:&#10;  selector:&#10;    app: $NAME$&#10;  ports:&#10;    - port: $PORT$&#10;      name: $PORT_NAME$&#10;  type: NodePort&#10;---" description="Kubernetes service" toReformat="true" toShortenFQNames="false">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT" expression="&quot;8080&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT_NAME" expression="&quot;http&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="kcd" value="kind: Deployment&#10;apiVersion: apps/v1&#10;metadata:&#10;  name: $NAME$&#10;spec:&#10;  selector:&#10;    matchLabels:&#10;      app: $NAME$&#10;      version: v1&#10;  replicas: 1&#10;  template:&#10;    metadata:&#10;      labels:&#10;        app: $NAME$&#10;        version: v1&#10;    spec:&#10;      containers:&#10;      - name: $NAME$&#10;        image: $IMAGE$&#10;        imagePullPolicy: Always&#10;        ports:&#10;        - containerPort: $PORT$&#10;      imagePullSecrets:&#10;      - name: regsecret&#10;      restartPolicy: Always&#10;---" description="Kubernetes deployment" toReformat="true" toShortenFQNames="false">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="IMAGE" expression="&quot;docker.sebastian-daschner.com/&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT" expression="&quot;8080&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="kccm" value="kind: ConfigMap&#10;apiVersion: v1&#10;metadata:&#10;  name: $NAME$ &#10;data:&#10;  application.properties: |&#10;---" description="Kubernetes configmap" toReformat="true" toShortenFQNames="false">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="AsciiDoc" value="false" />
+      <option name="Bash" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="SCALA" value="false" />
+      <option name="SQL" value="false" />
+      <option name="SSP" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="sbt" value="false" />
+    </context>
+  </template>
+  <template name="kci" value="kind: Ingress&#10;apiVersion: extensions/v1beta1&#10;metadata:&#10;  name: $NAME$&#10;spec:&#10;  rules:&#10;    - host: $HOST$&#10;      http:&#10;        paths:&#10;        - path: /&#10;          backend:&#10;            serviceName: $NAME$&#10;            servicePort: $SERVICE_PORT$&#10;---" description="Kubernetes ingress" toReformat="true" toShortenFQNames="false">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="HOST" expression="&quot;kubernetes.local&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="SERVICE_PORT" expression="&quot;8080&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="kcp" value="kind: Pod&#10;apiVersion: v1&#10;metadata:&#10;  name: $NAME$ &#10;  labels:&#10;    app: $NAME$&#10;spec:&#10;  containers:&#10;  - name: $NAME$&#10;    image: $IMAGE$&#10;    imagePullPolicy: IfNotPresent&#10;  imagePullSecrets:&#10;  - name: regsecret" description="Kubernetes pod" toReformat="true" toShortenFQNames="false">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="IMAGE" expression="&quot;docker.sebastian-daschner.com/&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="kce" value="kind: Endpoints&#10;apiVersion: v1&#10;metadata:&#10;  name: $NAME$&#10;subsets:&#10;  - addresses:&#10;      - ip: $IP$&#10;    ports:&#10;      - port: $PORT$" description="Kubernetes endpoint" toReformat="true" toShortenFQNames="false">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="IP" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT" expression="&quot;8080&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prc" value="global:&#10;  scrape_interval:     15s&#10;&#10;  external_labels:&#10;    monitor: '$MONITOR$'&#10;&#10;scrape_configs:&#10;  - job_name: '$JOB$'&#10;    scrape_interval: 5s&#10;    metrics_path: '/metrics/'&#10;    static_configs:&#10;      - targets: ['$TARGET$:$PORT$']" description="Prometheus config" toReformat="false" toShortenFQNames="false">
+    <variable name="MONITOR" expression="&quot;-monitor&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="JOB" expression="&quot;-metric&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="TARGET" expression="&quot;localhost&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT" expression="&quot;8080&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="kpdb" value="apiVersion: policy/v1beta1&#10;kind: PodDisruptionBudget&#10;metadata:&#10;  name: $NAME$-pdb&#10;spec:&#10;  minAvailable: $MIN$&#10;  selector:&#10;    matchLabels:&#10;      app: $NAME$&#10;---" description="Kubernetes pod disruption budget" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MIN" expression="&quot;1&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="AsciiDoc" value="false" />
+      <option name="Bash" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="SCALA" value="false" />
+      <option name="SQL" value="false" />
+      <option name="SSP" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="sbt" value="false" />
+    </context>
+  </template>
+  <template name="idv" value="apiVersion: networking.istio.io/v1alpha3&#10;kind: VirtualService&#10;metadata:&#10;  name: $NAME$&#10;spec:&#10;  hosts:&#10;  - $NAME$&#10;  http:&#10;  - route:&#10;    - destination:&#10;        host: $NAME$&#10;        subset: $VERSION$&#10;---" description="Istio default virtual service" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VERSION" expression="&quot;v1&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="AsciiDoc" value="false" />
+      <option name="Bash" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="SCALA" value="false" />
+      <option name="SQL" value="false" />
+      <option name="SSP" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="sbt" value="false" />
+    </context>
+  </template>
+  <template name="icbdr" value="apiVersion: networking.istio.io/v1alpha3&#10;kind: DestinationRule&#10;metadata:&#10;  name: $NAME$ &#10;spec:&#10;  host: $NAME$&#10;  trafficPolicy:&#10;    connectionPool:&#10;      tcp:&#10;        maxConnections: 1&#10;      http:&#10;        http1MaxPendingRequests: 1&#10;        maxRequestsPerConnection: 1&#10;    outlierDetection:&#10;      consecutiveErrors: 1&#10;      interval: 1s&#10;      baseEjectionTime: 3m&#10;      maxEjectionPercent: 100&#10;---" description="Istio circuit breaker destination rule" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="AsciiDoc" value="false" />
+      <option name="Bash" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="SCALA" value="false" />
+      <option name="SQL" value="false" />
+      <option name="SSP" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="sbt" value="false" />
+    </context>
+  </template>
+  <template name="iddr" value="apiVersion: networking.istio.io/v1alpha3&#10;kind: DestinationRule&#10;metadata:&#10;  name: $NAME$&#10;spec:&#10;  host: $NAME$&#10;  subsets:&#10;  - name: $VERSION$&#10;    labels:&#10;      version: $VERSION$&#10;---" description="Istio default destination rule" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VERSION" expression="&quot;v1&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="AsciiDoc" value="false" />
+      <option name="Bash" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="SCALA" value="false" />
+      <option name="SQL" value="false" />
+      <option name="SSP" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="sbt" value="false" />
+    </context>
+  </template>
+  <template name="idg" value="apiVersion: networking.istio.io/v1alpha3&#10;kind: Gateway&#10;metadata:&#10;  name: $NAME$-gateway&#10;spec:&#10;  selector:&#10;    istio: ingressgateway&#10;  servers:&#10;  - port:&#10;      number: $PORT$&#10;      name: http&#10;      protocol: HTTP&#10;    hosts:&#10;    - &quot;*&quot;&#10;---" description="Istio default gateway" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT" expression="&quot;80&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="AsciiDoc" value="false" />
+      <option name="Bash" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="SCALA" value="false" />
+      <option name="SQL" value="false" />
+      <option name="SSP" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="sbt" value="false" />
+    </context>
+  </template>
+  <template name="idse" value="apiVersion: networking.istio.io/v1alpha3&#10;kind: ServiceEntry&#10;metadata:&#10;  name: $NAME$&#10;spec:&#10;  hosts:&#10;  - $HOST$&#10;  ports:&#10;  - number: $PORT$&#10;    name: $PORT_NAME$&#10;    protocol: $PROTOCOL$&#10;  resolution: DNS&#10;  location: MESH_EXTERNAL&#10;---" description="Istio default service entry" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="HOST" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT" expression="&quot;80&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PORT_NAME" expression="&quot;http&quot;" defaultValue="" alwaysStopAt="true" />
+    <variable name="PROTOCOL" expression="&quot;HTTP&quot;" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="AsciiDoc" value="false" />
+      <option name="Bash" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GSP" value="false" />
+      <option name="HAML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="MXML" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="OTHER" value="true" />
+      <option name="SCALA" value="false" />
+      <option name="SQL" value="false" />
+      <option name="SSP" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="XML" value="false" />
+      <option name="sbt" value="false" />
+    </context>
+  </template>
+</templateSet>

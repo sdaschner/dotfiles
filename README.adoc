@@ -1,3 +1,9 @@
 == Dotfiles
 
 Some of my dotfiles. Have a look at my https://blog.sebastian-daschner.com/entries/effective-keyboard-usage-video-course[video course^] on effective developer keyboard usage.
+
+=== IntelliJ Live templates
+
+Copy the live templates into your `~/.IntelliJIdea*/` folder under `config/jba_config/templates/`.
+
+The `config/jba_config/templates.xml` files exists to avoid collisions with predefined default templates. You might have to merge in the parts of the XML file manually.

@@ -1,0 +1,39 @@
+<templateSet group="sdaschner_Test">
+  <template name="va" value="@org.junit.jupiter.api.AfterEach&#10;void tearDown() {&#10;    $END$&#10;}" description="@AfterEach void tearDown" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="vb" value="@org.junit.jupiter.api.BeforeEach&#10;void setUp() {&#10;    $END$&#10;}" description="@Before public void setUp" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="vt" value="@org.junit.jupiter.api.Test&#10;void test$END$() {&#10;}" description="@Test void test" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="pva" value="@org.junit.After&#10;public void tearDown() {&#10;    $END$&#10;}" description="@After public void tearDown (Junit 4)" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="pvb" value="@org.junit.Before&#10;public void setUp() {&#10;    $END$&#10;}" description="@Before public void setUp (Junit 4)" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="pvt" value="@org.junit.Test&#10;public void test$END$() {&#10;}" description="@Test public void test (Junit 4)" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="asth" value="org.assertj.core.api.Assertions.assertThat($CURSOR$)" description="AssertJ assertThat" toReformat="true" toShortenFQNames="true" useStaticImport="true">
+    <variable name="CURSOR" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>

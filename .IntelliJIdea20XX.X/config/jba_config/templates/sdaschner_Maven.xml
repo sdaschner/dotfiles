@@ -1,0 +1,82 @@
+<templateSet group="sdaschner_Maven">
+  <template name="embdbdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.apache.derby&lt;/groupId&gt;&#10;    &lt;artifactId&gt;derby&lt;/artifactId&gt;&#10;    &lt;version&gt;10.14.1.0&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;&#10;&lt;dependency&gt;&#10;    &lt;groupId&gt;org.eclipse.persistence&lt;/groupId&gt;&#10;    &lt;artifactId&gt;eclipselink&lt;/artifactId&gt;&#10;    &lt;version&gt;2.7.0&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="Embedded JPA DB Dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="jaxrsan" value="&lt;plugin&gt;&#10;    &lt;groupId&gt;com.sebastian-daschner&lt;/groupId&gt;&#10;    &lt;artifactId&gt;jaxrs-analyzer-maven-plugin&lt;/artifactId&gt;&#10;    &lt;version&gt;$END$&lt;/version&gt;&#10;    &lt;executions&gt;&#10;        &lt;execution&gt;&#10;            &lt;goals&gt;&#10;                &lt;goal&gt;analyze-jaxrs&lt;/goal&gt;&#10;            &lt;/goals&gt;&#10;            &lt;configuration&gt;&#10;                &lt;backend&gt;plaintext&lt;/backend&gt;&#10;            &lt;/configuration&gt;&#10;        &lt;/execution&gt;&#10;    &lt;/executions&gt;&#10;&lt;/plugin&gt;" description="JAX-RS Analyzer Maven Plugin" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="jaxrscldep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.glassfish.jersey.core&lt;/groupId&gt;&#10;    &lt;artifactId&gt;jersey-client&lt;/artifactId&gt;&#10;    &lt;version&gt;2.28&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;&#10;&lt;dependency&gt;&#10;    &lt;groupId&gt;org.glassfish.jersey.inject&lt;/groupId&gt;&#10;    &lt;artifactId&gt;jersey-hk2&lt;/artifactId&gt;&#10;    &lt;version&gt;2.28&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;&#10;&lt;dependency&gt;&#10;    &lt;groupId&gt;org.glassfish.jersey.media&lt;/groupId&gt;&#10;    &lt;artifactId&gt;jersey-media-json-jackson&lt;/artifactId&gt;&#10;    &lt;version&gt;2.28&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;&#10;&lt;dependency&gt;&#10;    &lt;groupId&gt;org.glassfish.jersey.media&lt;/groupId&gt;&#10;    &lt;artifactId&gt;jersey-media-json-processing&lt;/artifactId&gt;&#10;    &lt;version&gt;2.28&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="JAX-RS Client dependency (for test)" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="junitdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;&#10;    &lt;artifactId&gt;junit-jupiter-api&lt;/artifactId&gt;&#10;    &lt;version&gt;5.5.2&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;&#10;&lt;dependency&gt;&#10;    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;&#10;    &lt;artifactId&gt;junit-jupiter-engine&lt;/artifactId&gt;&#10;    &lt;version&gt;5.5.2&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;&#10;&lt;dependency&gt;&#10;    &lt;groupId&gt;org.mockito&lt;/groupId&gt;&#10;    &lt;artifactId&gt;mockito-core&lt;/artifactId&gt;&#10;    &lt;version&gt;3.2.4&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;&#10;&lt;dependency&gt;&#10;    &lt;groupId&gt;org.assertj&lt;/groupId&gt;&#10;    &lt;artifactId&gt;assertj-core&lt;/artifactId&gt;&#10;    &lt;version&gt;3.14.0&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="JUnit, Mockito, AssertJ" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="resteasydep" value="        &lt;dependency&gt;&#10;            &lt;groupId&gt;org.jboss.resteasy&lt;/groupId&gt;&#10;            &lt;artifactId&gt;resteasy-client&lt;/artifactId&gt;&#10;            &lt;version&gt;3.0.19.Final&lt;/version&gt;&#10;        &lt;/dependency&gt;" description="RESTEasy Client Dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="promdep" value="        &lt;dependency&gt;&#10;            &lt;groupId&gt;io.prometheus&lt;/groupId&gt;&#10;            &lt;artifactId&gt;simpleclient&lt;/artifactId&gt;&#10;            &lt;version&gt;0.1.0&lt;/version&gt;&#10;            &lt;scope&gt;provided&lt;/scope&gt;&#10;        &lt;/dependency&gt;&#10;        &lt;dependency&gt;&#10;            &lt;groupId&gt;io.prometheus&lt;/groupId&gt;&#10;            &lt;artifactId&gt;simpleclient_common&lt;/artifactId&gt;&#10;            &lt;version&gt;0.1.0&lt;/version&gt;&#10;            &lt;scope&gt;provided&lt;/scope&gt;&#10;        &lt;/dependency&gt;" description="Prometheus client dependencies" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="wiremdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;com.github.tomakehurst&lt;/groupId&gt;&#10;    &lt;artifactId&gt;wiremock&lt;/artifactId&gt;&#10;    &lt;version&gt;2.12.0&lt;/version&gt;&#10;    &lt;scope&gt;test&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="WireMock dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="mpdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.eclipse.microprofile&lt;/groupId&gt;&#10;    &lt;artifactId&gt;microprofile&lt;/artifactId&gt;&#10;    &lt;version&gt;3.0&lt;/version&gt;&#10;    &lt;type&gt;pom&lt;/type&gt;&#10;    &lt;scope&gt;provided&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="MicroProfile 3.0 dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="mphealthdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.eclipse.microprofile.health&lt;/groupId&gt;&#10;    &lt;artifactId&gt;microprofile-health-api&lt;/artifactId&gt;&#10;    &lt;version&gt;2.0&lt;/version&gt;&#10;    &lt;scope&gt;provided&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="MicroProfile Health 2.0 dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="mpconfigdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.eclipse.microprofile.config&lt;/groupId&gt;&#10;    &lt;artifactId&gt;microprofile-config-api&lt;/artifactId&gt;&#10;    &lt;version&gt;1.3&lt;/version&gt;&#10;    &lt;scope&gt;provided&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="MicroProfile Config 1.3 dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="mpftdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.eclipse.microprofile.fault-tolerance&lt;/groupId&gt;&#10;    &lt;artifactId&gt;microprofile-fault-tolerance-api&lt;/artifactId&gt;&#10;    &lt;version&gt;2.0&lt;/version&gt;&#10;    &lt;scope&gt;provided&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="MicroProfile Fault Tolerance 2.0 dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="mpmetricsdep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;org.eclipse.microprofile.metrics&lt;/groupId&gt;&#10;    &lt;artifactId&gt;microprofile-metrics-api&lt;/artifactId&gt;&#10;    &lt;version&gt;2.0.1&lt;/version&gt;&#10;    &lt;scope&gt;provided&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="MicroProfile Metrics 2.0 dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="jee8dep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;javax&lt;/groupId&gt;&#10;    &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;&#10;    &lt;version&gt;8.0&lt;/version&gt;&#10;    &lt;scope&gt;provided&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="Java EE 8.0 API dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="libdev" value="&lt;plugin&gt;&#10;    &lt;groupId&gt;io.openliberty.tools&lt;/groupId&gt;&#10;    &lt;artifactId&gt;liberty-maven-plugin&lt;/artifactId&gt;&#10;    &lt;version&gt;3.0.1&lt;/version&gt;&#10;&lt;/plugin&gt;&#10;&lt;plugin&gt;&#10;    &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;&#10;    &lt;version&gt;3.2.2&lt;/version&gt;&#10;&lt;/plugin&gt;&#10;&lt;plugin&gt;&#10;    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;&#10;    &lt;version&gt;2.22.2&lt;/version&gt;&#10;&lt;/plugin&gt;&#10;&lt;plugin&gt;&#10;    &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;&#10;    &lt;version&gt;2.22.2&lt;/version&gt;&#10;&lt;/plugin&gt;" description="Liberty Dev Maven Plugin" toReformat="false" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="jkee8dep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;jakarta.platform&lt;/groupId&gt;&#10;    &lt;artifactId&gt;jakarta.jakartaee-api&lt;/artifactId&gt;&#10;    &lt;version&gt;8.0.0&lt;/version&gt;&#10;    &lt;scope&gt;provided&lt;/scope&gt;&#10;&lt;/dependency&gt;" description="Jakarta EE 8 API dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+  <template name="quardep" value="&lt;dependency&gt;&#10;    &lt;groupId&gt;io.quarkus&lt;/groupId&gt;&#10;    &lt;artifactId&gt;quarkus-$END$&lt;/artifactId&gt;&#10;&lt;/dependency&gt;" description="Quarkus dependency" toReformat="true" toShortenFQNames="false">
+    <context>
+      <option name="MAVEN" value="true" />
+    </context>
+  </template>
+</templateSet>
