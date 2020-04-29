@@ -78,54 +78,36 @@
   <template name="pse" value="private java.util.Set&lt;$TYPE$&gt; $END$" description="private java.util.Set" toReformat="true" toShortenFQNames="true">
     <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
-      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="pses" value="private java.util.Set&lt;String&gt; $END$" description="private java.util.Set&lt;String&gt;" toReformat="true" toShortenFQNames="true">
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
-      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="pli" value="private java.util.List&lt;$TYPE$&gt; $END$" description="private java.util.List" toReformat="true" toShortenFQNames="true">
     <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
-      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="plis" value="private java.util.List&lt;String&gt; $END$" description="private java.util.List&lt;String&gt;" toReformat="true" toShortenFQNames="true">
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
-      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="pma" value="private java.util.Map&lt;$KEY_TYPE$, $VALUE_TYPE$&gt; $END$" description="private java.util.Map" toReformat="true" toShortenFQNames="true">
     <variable name="KEY_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="VALUE_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
-      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="pmas" value="private java.util.Map&lt;String, $VALUE_TYPE$&gt; $END$" description="private java.util.Map&lt;String&gt;" toReformat="true" toShortenFQNames="true">
     <variable name="VALUE_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
-      <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="self" value="$CLASS$" description="This class" toReformat="true" toShortenFQNames="true">
@@ -140,34 +122,26 @@
   <template name="se" value="java.util.Set&lt;$TYPE$&gt; $END$" description="java.util.Set" toReformat="true" toShortenFQNames="true">
     <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
       <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="ses" value="java.util.Set&lt;String&gt; $END$" description="java.util.Set&lt;String&gt;" toReformat="true" toShortenFQNames="true">
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
       <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="li" value="java.util.List&lt;$TYPE$&gt; $END$" description="java.util.List" toReformat="true" toShortenFQNames="true">
     <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
       <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="lis" value="java.util.List&lt;String&gt; $END$" description="java.util.List&lt;String&gt;" toReformat="true" toShortenFQNames="true">
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
       <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
@@ -175,18 +149,14 @@
     <variable name="KEY_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="VALUE_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
       <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
   <template name="mas" value="java.util.Map&lt;String, $VALUE_TYPE$&gt; $END$" description="java.util.Map&lt;String&gt;" toReformat="true" toShortenFQNames="true">
     <variable name="VALUE_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
-      <option name="COMPLETION" value="true" />
       <option name="JAVA_DECLARATION" value="true" />
-      <option name="JAVA_EXPRESSION" value="true" />
       <option name="JAVA_STATEMENT" value="true" />
     </context>
   </template>
