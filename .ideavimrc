@@ -1,3 +1,7 @@
+set relativenumber
+set idearefactormode=keep
+set ideajoin
+
 let mapleader = " "
 
 noremap <Esc> <nop>
@@ -8,8 +12,6 @@ nnoremap <C-j> :m +1<CR>
 nnoremap <C-k> :m -2<CR>
 inoremap <C-j> <Esc>:m +1<CR>gi
 inoremap <C-k> <Esc>:m -2<CR>gi
-
-set relativenumber
 
 " system clipboard
 vmap <leader>y "+y
