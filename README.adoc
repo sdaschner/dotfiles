@@ -4,6 +4,9 @@ Some of my dotfiles. Have a look at my https://blog.sebastian-daschner.com/entri
 
 === IntelliJ Live templates
 
-Copy the live templates into your `~/.IntelliJIdea*/` folder under `config/jba_config/templates/`.
+Copy the live templates into your IDEA configuration directory, under `<config-dir>/config/jba_config/templates/`.
+
+NOTE: In IntelliJ `2020.1` the default configuration directory has changed: https://www.jetbrains.com/help/idea/tuning-the-ide.html#default-dirs.
+For Linux, the default is now `~/.config/JetBrains/IntelliJIdea20XX.X/`
 
 The `config/jba_config/templates.xml` files exists to avoid collisions with predefined default templates. You might have to merge in the parts of the XML file manually.
