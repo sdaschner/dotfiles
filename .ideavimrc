@@ -1,4 +1,4 @@
-set relativenumber
+set number relativenumber
 set idearefactormode=keep
 set ideajoin
 
@@ -35,3 +35,7 @@ nnoremap <leader><leader> <C-Tab>
 
 " extensions
 set surround
+
+set NERDTree
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
