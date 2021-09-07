@@ -1,6 +1,8 @@
 set number relativenumber
 set idearefactormode=keep
 set ideajoin
+set surround
+set easymotion
 
 let mapleader = " "
 
@@ -28,13 +30,16 @@ nmap <leader>u <C-u>
 vmap <leader>d <C-d>
 vmap <leader>u <C-u>
 
-nmap <leader>h :action PreviousTab<CR>
-nmap <leader>l :action NextTab<CR>
-nmap <leader>bd :action CloseEditor<CR>
+" actions
+nmap <leader>h <action>(PreviousTab)
+nmap <leader>l <action>(NextTab)
+nmap <leader>bd <action>(CloseEditor)
+nmap <leader>i <action>(Generate)
+nmap <leader>m <action>(Git.Menu)
+nmap <leader>s <action>(QuickChangeScheme)
+nmap <leader>/ <action>(ShowErrorDescription)
+nmap <leader>e <action>(GotoNextError)
 nnoremap <leader><leader> <C-Tab>
-
-" extensions
-set surround
 
 set NERDTree
 let g:NERDTreeMapActivateNode='l'
