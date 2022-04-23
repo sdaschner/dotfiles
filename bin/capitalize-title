@@ -3,7 +3,7 @@ set -euo pipefail
 
 printHelp() {
   cat << EOF
-Capitalizes an English title according to the AP style.
+Capitalizes an English title according to the AP style (in a best-effort manner).
 
 USAGE:
     capitalize-title <title>
@@ -15,6 +15,8 @@ EXAMPLES:
                            Returns: A River Runs Through the City
     cat titles.txt | capitalize-title -
                            Capitalizes each line in the titles.txt file
+
+INFO: This doesn't perform any Grammar analysis and thus might incorrectly return some prepositions, conjunctions, adjective, or adverbs, such as yet, out, so, etc.
 EOF
   exit 2
 }
@@ -23,10 +25,11 @@ capitalize() {
   set ${*,,}
   set ${*^}
   echo -n "$1 "
-  shift 1
+  last="${@: -1}"
+  set -- "${@:2:$#-2}"
   for f in ${*}; do
     case $f in
-      A|The|Is|Of|And|Or|But|To|In|By)
+      A|And|As|At|But|By|For|If|In|Nor|Of|Off|On|Or|The|To|Up)
         echo -n "${f,,} "
         ;;
       *)
@@ -34,11 +37,17 @@ capitalize() {
         ;;
     esac
   done
-  echo
+  echo "$last"
 }
 
 if [[ "$@" == "" ]]; then
   printHelp
+fi
+
+if [[ "$#" == 1 ]]; then
+  set ${1^}
+  echo "$1"
+  exit 0
 fi
 
 if [[ "$1" == "-" ]]; then
