@@ -1,0 +1,50 @@
+#!/bin/bash
+set -euo pipefail
+
+printHelp() {
+  cat << EOF
+Capitalizes an English title according to the AP style.
+
+USAGE:
+    capitalize-title <title>
+                           Capitalizes the provided title according to AP style
+    capitalize-title -
+                           Reads the title from stdin.
+EXAMPLES:
+    capitalize-title a river runs through the city
+                           Returns: A River Runs Through the City
+    cat titles.txt | capitalize-title -
+                           Capitalizes each line in the titles.txt file
+EOF
+  exit 2
+}
+
+capitalize() {
+  set ${*,,}
+  set ${*^}
+  echo -n "$1 "
+  shift 1
+  for f in ${*}; do
+    case $f in
+      A|The|Is|Of|And|Or|But|To|In|By)
+        echo -n "${f,,} "
+        ;;
+      *)
+        echo -n "$f "
+        ;;
+    esac
+  done
+  echo
+}
+
+if [[ "$@" == "" ]]; then
+  printHelp
+fi
+
+if [[ "$1" == "-" ]]; then
+  while IFS='$\n' read -r line; do
+    capitalize "$line"
+  done
+else
+  capitalize $@
+fi
