@@ -1,0 +1,5 @@
+== GIMP scripts
+
+- Add under `/usr/share/gimp/2.0/scripts/` with the same permissions as the other scripts
+- Start GIMP and run "`Filters`" -> "`Script-Fu`" -> "`Refresh Scripts`"
+- The scripts should be available under the menus (e.g. "`Colors`" -> "`Cycle FG`") and can be assigned to keyboard shortcuts
