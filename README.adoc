@@ -1,6 +1,12 @@
 == Dotfiles
 
-Some of my dotfiles. Have a look at my https://blog.sebastian-daschner.com/entries/effective-keyboard-usage-video-course[video course^] on effective developer keyboard usage.
+Some of my dotfiles. Have a look at my https://blog.sebastian-daschner.com/entries/developer-productivity-masterclass-early-access[video course masterclass^] on developer productivity.
+
+=== Structure
+
+- All files and directories that start with a dot (`.`) belong to the user's home directory, directly or via symlink.
+- `bin/` contains binaries and has to reside in the `$PATH`
+- `examples/` contains examples for my videos and courses
 
 === IntelliJ Live templates
 
