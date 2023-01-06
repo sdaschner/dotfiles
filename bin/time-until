@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ "$1" == "" ]]; then
+  echo "Usage: ${0##*/} <date-string>"
+  echo " Example: ${0##*/} 'tomorrow 06:00'"
+  exit 2
+fi
+
+set -euo pipefail
+
+secsUntil=$(( $(date +%s -d "$*") - $( date +%s ) ))
+minutesUntil=$(bc <<< "scale=1; $secsUntil/60")
+hoursUntil=$(bc <<< "scale=2; $secsUntil/3600")
+date=$(date -d "$*")
+
+echo $hoursUntil hours \(or $minutesUntil mins\) until $date
