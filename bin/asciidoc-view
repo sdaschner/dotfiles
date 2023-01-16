@@ -1,11 +1,22 @@
 #!/bin/bash
-set -euo pipefail
 
 if [[ "$1" == "" ]]; then
   echo "Usage: ${0##*/} <file.adoc>"; exit 2
 fi
 
+set -euo pipefail
+
+input=$1
+
+if [[ "$1" == "-" ]]; then
+  input=/tmp/tmp.adoc
+  rm -rf $input
+  while IFS='$\n' read -r line; do
+    echo "$line" >> $input
+  done
+fi
+
 file=/tmp/tmp.html
 
-asciidoctor $1 -a source-highlighter=coderay -o $file
-chromium $file &
+asciidoctor $input -a source-highlighter=coderay -o $file &> /dev/null
+chromium $file &> /dev/null &
