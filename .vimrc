@@ -75,12 +75,12 @@ let mapleader = "\<Space>"
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
+inoremap <Up> <c-y>
+inoremap <Down> <c-e>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
+noremap <Up> <c-y>
+noremap <Down> <c-e>
 
 " presentation mode
 noremap <Left> :silent bp<CR> :redraw!<CR>
@@ -130,6 +130,11 @@ nmap <leader>F :.!toilet -w 200 -f standard<CR>
 nmap <leader>f :.!toilet -w 200 -f small<CR>
 " makes Ascii border
 nmap <leader>1 :.!toilet -w 200 -f term -F border<CR>
+" capitalize titles
+nmap <leader>c :.!capitalize-title -<CR>
+vnoremap <leader>c :.!capitalize-title -<CR>
+
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " system clipboard
 vmap <leader>y "+y
@@ -156,6 +161,8 @@ let &t_te.="\e[0 q"
 
 " search highlighting color
 highlight Search ctermfg=grey ctermbg=red
+highlight Macro ctermfg=cyan
+highlight Special ctermfg=red
 
 " removes search highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
@@ -164,7 +171,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 nmap <leader><Enter> !!zsh<CR>
 
 " AsciiDoc preview
-nmap <leader>v :!asciidoc-view %<CR><CR>
+nmap <leader>v :w !asciidoc-view -<CR><CR>
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff

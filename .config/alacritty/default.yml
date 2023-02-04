@@ -1,0 +1,55 @@
+font:
+  normal:
+    family: terminal-font
+    style: Regular
+
+  bold:
+    family: terminal-font
+    style: Bold
+
+  italic:
+    family: terminal-font
+    style: Italic
+
+  bold_italic:
+    family: terminal-font
+    style: Bold Italic
+
+  size: 8
+  offset:
+    x: 2
+    y: 1
+
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
+  cursor:
+    text: '#000000'
+    cursor: '#f39d21'
+  vi_mode_cursor:
+    text: '#000000'
+    cursor: '#f39d21'
+
+  normal:
+    black: '#000000'
+    red: '#e84f4f'
+    green: '#b8d68c'
+    yellow: '#e1aa5d'
+    blue: '#7dc1cf'
+    magenta: '#9b64fb'
+    cyan: '#6d878d'
+    white: '#dddddd'
+  bright:
+    black: '#404040'
+    red: '#d23d3d'
+    green: '#a0cf5d'
+    yellow: '#f39d21'
+    blue: '#4e9fb1'
+    magenta: '#8542ff'
+    cyan: '#42717b'
+    white: '#000000'
+
+window:
+  padding:
+    x: 2

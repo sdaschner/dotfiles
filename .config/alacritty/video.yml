@@ -1,0 +1,6 @@
+font:
+  size: 19
+
+colors:
+  bright:
+    white: '#dddddd'
