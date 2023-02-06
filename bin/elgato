@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Controls Elgato Keylights.
+#
+# Usage: elgato <on|off>
+#
+# Will switch all known keylights on or off.
+# Reads a variable ELGATO_LIGHTS with the addresses as comma-separated list
+# To find out your addresses you can resolve the mDNS type _elg._tcp
+# for example via: `avahi-browse -t _elg._tcp --resolve` under Linux
+
+if [[ "$1" == "" ]]; then
+  >&2 echo "Usage: ${0##*/} <on|off>"; exit 2
+fi
+
+set -euo pipefail
+
+# TODO setup to your environment file or set ELGATO_LIGHTS
+#
+# source /some/path/.env
+# OR
+# ELGATO_LIGHTS=192.168.1.111:9123,192.168.1.112:9123,...
+
+function lights() {
+  host=$1
+  if [[ "$2" == "on" ]]; then
+    on=1
+  else
+    on=0
+  fi
+  curl --silent "http://$host/elgato/lights" -XPUT -H 'Content-Type: application/json' -d '{"numberOfLights":1,"lights":[{"on":'$on'}]}' > /dev/null
+}
+
+
+IFS=',' read -r -a array <<< "$ELGATO_LIGHTS"
+
+if [[ "$1" == "on" ]]; then
+  echo "Turning all lights on"
+else
+  echo "Turning all lights off"
+fi
+for light in "${array[@]}"; do
+  lights "$light" "$1"
+done
