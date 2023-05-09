@@ -1,0 +1,102 @@
+<templateSet group="sdaschner_Jakarta_EE">
+  <template name="em" value="@jakarta.persistence.PersistenceContext&#10;jakarta.persistence.EntityManager entityManager;" description="Inject the entity manager" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="pds" value="@jakarta.annotation.PreDestroy&#10;private void close$END$() {&#10;}" description="Create an pre-destroy method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="urii" value="@jakarta.ws.rs.core.Context&#10;jakarta.ws.rs.core.UriInfo uriInfo;" description="Inject the UriInfo" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="pct" value="@jakarta.annotation.PostConstruct&#10;void init$END$() {&#10;}" description="Create an initializer method" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="mes" value="@jakarta.annotation.Resource&#10;jakarta.enterprise.concurrent.ManagedExecutorService mes;" description="Inject the managed executor service" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="ijt" value="@jakarta.inject.Inject&#10;$END$" description="Inject a CDI managed bean" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="ssec" value="@jakarta.ws.rs.core.Context&#10;jakarta.ws.rs.sse.Sse sse;" description="Sse context" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="id" value="@jakarta.persistence.Id&#10;private long id;" description="Persistence @Id" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="ijte" value="@jakarta.inject.Inject&#10;jakarta.enterprise.event.Event&lt;$END$&gt;" description="Inject a CDI event" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="ijtc" value="@jakarta.inject.Inject&#10;@org.eclipse.microprofile.config.inject.ConfigProperty(name = &quot;$NAME$&quot;)&#10;$END$" description="Inject a config property" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="asd" value="@jakarta.enterprise.context.ApplicationScoped" description="@ApplicationScoped" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="rsd" value="@jakarta.enterprise.context.RequestScoped" description="@RequestScoped" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="dep" value="@jakarta.enterprise.context.Dependent" description="@Dependent" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="ph" value="@jakarta.ws.rs.Path(&quot;$END$&quot;)" description="@Path" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="projson" value="@jakarta.ws.rs.Produces(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)" description="@Produces(MediaType.APPLICATION_JSON)" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="conjson" value="@jakarta.ws.rs.Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)" description="@Consumes(MediaType.APPLICATION_JSON)" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="getm" value="@jakarta.ws.rs.GET&#10;public $RETURN_TYPE$ $NAME$() {&#10;    $END$&#10;}" description="@GET method" toReformat="true" toShortenFQNames="true">
+    <variable name="RETURN_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="&quot;get&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="tn" value="@jakarta.transaction.Transactional" description="@Transactional" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="pdm" value="@jakarta.enterprise.inject.Produces&#10;public $RETURN_TYPE$ $NAME$() {&#10;    $END$&#10;}" description="Create a CDI producer method" toReformat="true" toShortenFQNames="true">
+    <variable name="RETURN_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+</templateSet>

@@ -1,98 +1,98 @@
 <templateSet group="sdaschner_Java_EE">
-  <template name="em" value="@javax.persistence.PersistenceContext&#10;javax.persistence.EntityManager entityManager;" description="Inject the entity manager" toReformat="true" toShortenFQNames="true">
+  <template name="jem" value="@javax.persistence.PersistenceContext&#10;javax.persistence.EntityManager entityManager;" description="Inject the entity manager" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="pds" value="@javax.annotation.PreDestroy&#10;private void close$END$() {&#10;}" description="Create an pre-destroy method" toReformat="true" toShortenFQNames="true">
+  <template name="jpds" value="@javax.annotation.PreDestroy&#10;private void close$END$() {&#10;}" description="Create an pre-destroy method" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="urii" value="@javax.ws.rs.core.Context&#10;javax.ws.rs.core.UriInfo uriInfo;" description="Inject the UriInfo" toReformat="true" toShortenFQNames="true">
+  <template name="jurii" value="@javax.ws.rs.core.Context&#10;javax.ws.rs.core.UriInfo uriInfo;" description="Inject the UriInfo" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="pct" value="@javax.annotation.PostConstruct&#10;private void init$END$() {&#10;}" description="Create an initializer method" toReformat="true" toShortenFQNames="true">
+  <template name="jpct" value="@javax.annotation.PostConstruct&#10;void init$END$() {&#10;}" description="Create an initializer method" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="mes" value="@javax.annotation.Resource&#10;javax.enterprise.concurrent.ManagedExecutorService mes;" description="Inject the managed executor service" toReformat="true" toShortenFQNames="true">
+  <template name="jmes" value="@javax.annotation.Resource&#10;javax.enterprise.concurrent.ManagedExecutorService mes;" description="Inject the managed executor service" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="ijt" value="@javax.inject.Inject&#10;$END$" description="Inject a CDI managed bean" toReformat="true" toShortenFQNames="true">
+  <template name="jijt" value="@javax.inject.Inject&#10;$END$" description="Inject a CDI managed bean" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="ssec" value="@javax.ws.rs.core.Context&#10;javax.ws.rs.sse.Sse sse;" description="Sse context" toReformat="false" toShortenFQNames="true">
+  <template name="jssec" value="@javax.ws.rs.core.Context&#10;javax.ws.rs.sse.Sse sse;" description="Sse context" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="id" value="@javax.persistence.Id&#10;private long id;" description="Persistence @Id" toReformat="false" toShortenFQNames="true">
+  <template name="jid" value="@javax.persistence.Id&#10;private long id;" description="Persistence @Id" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="ijte" value="@javax.inject.Inject&#10;javax.enterprise.event.Event&lt;$END$&gt;" description="Inject a CDI event" toReformat="true" toShortenFQNames="true">
+  <template name="jijte" value="@javax.inject.Inject&#10;javax.enterprise.event.Event&lt;$END$&gt;" description="Inject a CDI event" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="ijtc" value="@javax.inject.Inject&#10;@org.eclipse.microprofile.config.inject.ConfigProperty(name = &quot;$NAME$&quot;)&#10;$END$" description="Inject a config property" toReformat="true" toShortenFQNames="true">
+  <template name="jijtc" value="@javax.inject.Inject&#10;@org.eclipse.microprofile.config.inject.ConfigProperty(name = &quot;$NAME$&quot;)&#10;$END$" description="Inject a config property" toReformat="true" toShortenFQNames="true">
     <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="asd" value="@javax.enterprise.context.ApplicationScoped" description="@ApplicationScoped" toReformat="true" toShortenFQNames="true">
+  <template name="jasd" value="@javax.enterprise.context.ApplicationScoped" description="@ApplicationScoped" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="rsd" value="@javax.enterprise.context.RequestScoped" description="@RequestScoped" toReformat="true" toShortenFQNames="true">
+  <template name="jrsd" value="@javax.enterprise.context.RequestScoped" description="@RequestScoped" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="dep" value="@javax.enterprise.context.Dependent" description="@Dependent" toReformat="true" toShortenFQNames="true">
+  <template name="jdep" value="@javax.enterprise.context.Dependent" description="@Dependent" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="ph" value="@javax.ws.rs.Path(&quot;$END$&quot;)" description="@Path" toReformat="true" toShortenFQNames="true">
+  <template name="jph" value="@javax.ws.rs.Path(&quot;$END$&quot;)" description="@Path" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="projson" value="@javax.ws.rs.Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)" description="@Produces(MediaType.APPLICATION_JSON)" toReformat="true" toShortenFQNames="true">
+  <template name="jprojson" value="@javax.ws.rs.Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)" description="@Produces(MediaType.APPLICATION_JSON)" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="conjson" value="@javax.ws.rs.Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)" description="@Consumes(MediaType.APPLICATION_JSON)" toReformat="true" toShortenFQNames="true">
+  <template name="jconjson" value="@javax.ws.rs.Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)" description="@Consumes(MediaType.APPLICATION_JSON)" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="getm" value="@javax.ws.rs.GET&#10;public $RETURN_TYPE$ $NAME$() {&#10;    $END$&#10;}" description="@GET method" toReformat="true" toShortenFQNames="true">
+  <template name="jgetm" value="@javax.ws.rs.GET&#10;public $RETURN_TYPE$ $NAME$() {&#10;    $END$&#10;}" description="@GET method" toReformat="true" toShortenFQNames="true">
     <variable name="RETURN_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="&quot;get&quot;" alwaysStopAt="true" />
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="tn" value="@javax.transaction.Transactional" description="@Transactional" toReformat="true" toShortenFQNames="true">
+  <template name="jtn" value="@javax.transaction.Transactional" description="@Transactional" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="JAVA_DECLARATION" value="true" />
     </context>
   </template>
-  <template name="pdm" value="@javax.enterprise.inject.Produces&#10;public $RETURN_TYPE$ $NAME$() {&#10;    $END$&#10;}" description="Create a CDI producer method" toReformat="true" toShortenFQNames="true">
+  <template name="jpdm" value="@javax.enterprise.inject.Produces&#10;public $RETURN_TYPE$ $NAME$() {&#10;    $END$&#10;}" description="Create a CDI producer method" toReformat="true" toShortenFQNames="true">
     <variable name="RETURN_TYPE" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
