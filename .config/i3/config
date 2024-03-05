@@ -17,28 +17,30 @@ floating_modifier $mod
 bindsym $mod+q exec "_i3-graceful-kill"
 
 # open terminal
-bindsym $mod+Return exec urxvt
-bindsym $mod+apostrophe exec urxvt -cd "$(xcwd)"
-bindsym $mod+u split h; exec urxvt
-bindsym $mod+y split h; exec urxvt -cd "$(xcwd)"
-bindsym $mod+i split v; exec urxvt
-bindsym $mod+o split v; exec urxvt -cd "$(xcwd)"
+bindsym $mod+Return exec alacritty
+bindsym $mod+apostrophe exec alacritty --working-directory "$(xcwd)"
+bindsym $mod+u split h; exec alacritty
+bindsym $mod+y split h; exec alacritty --working-directory "$(xcwd)"
+bindsym $mod+i split v; exec alacritty
+bindsym $mod+o split v; exec alacritty --working-directory "$(xcwd)"
 # with VIM
-bindsym $mod+Control+Return exec urxvt -e zsh-vim
-bindsym $mod+Control+apostrophe exec urxvt -cd "$(xcwd)" -e zsh-vim
-bindsym $mod+Control+u split h; exec urxvt -e zsh-vim
-bindsym $mod+Control+y split h; exec urxvt -cd "$(xcwd)" -e zsh-vim
-bindsym $mod+Control+i split v; exec urxvt -e zsh-vim
-bindsym $mod+Control+o split v; exec urxvt -cd "$(xcwd)" -e zsh-vim
+bindsym $mod+Control+Return exec alacritty -e zsh-vim
+bindsym $mod+Control+apostrophe exec alacritty --working-directory "$(xcwd)" -e zsh-vim
+bindsym $mod+Control+u split h; exec alacritty -e zsh-vim
+bindsym $mod+Control+y split h; exec alacritty --working-directory "$(xcwd)" -e zsh-vim
+bindsym $mod+Control+i split v; exec alacritty -e zsh-vim
+bindsym $mod+Control+o split v; exec alacritty --working-directory "$(xcwd)" -e zsh-vim
 
-# start dmenu (a program launcher)
-bindsym $mod+g exec dmenu-launch
+# start rofi (a program launcher)
+bindsym $mod+g exec rofi -show run
+bindsym $mod+Shift+g exec rofimoji
 
 # start programs
 bindsym $mod+Mod1+1 exec chromium
 bindsym $mod+Mod1+2 exec firefox
 bindsym $mod+Mod1+3 exec intellij-idea-ultimate-edition
 bindsym $mod+Mod1+5 exec spotify
+bindsym $mod+Mod1+6 exec rofi -show calc
 bindsym $mod+Mod1+9 exec pavucontrol
 
 # move mouse out of the way
@@ -60,6 +62,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id sudo -n backlight-up
 bindsym $mod+Home exec "sleep 0.1; scrot -e 'mv $f /tmp/'"
 bindsym $mod+Shift+Home exec "sleep 0.1; scrot -s -e 'mv $f /tmp/'"
 bindsym $mod+Mod1+Home exec "_i3-screencast-active-window $(xdotool getactivewindow)"
+
+# magnifier
+bindsym $mod+x exec "kmag"
 
 # change focus
 bindsym $mod+h focus left
@@ -229,4 +234,7 @@ bindsym $mod+Shift+Escape mode "$mode_system"
 
 # rules
 for_window [class="pinentry"] floating enable
+for_window [class="kruler"] floating enable
+for_window [class="Animate"] floating enable
 for_window [class="fullscreen"] fullscreen enable
+for_window [class="kmag"] floating enable resize set 640 640
