@@ -67,4 +67,3 @@ sourceIfExists() {
 }
 
 sourceIfExists ~/.aliases
-sourceIfExists /usr/local/ibmcloud/autocomplete/zsh_autocomplete 

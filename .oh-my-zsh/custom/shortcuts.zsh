@@ -2,6 +2,7 @@
 clear-ls-all() {
     clear
     exa -al
+    zle reset-prompt
 }
 zle -N clear-ls-all
 
@@ -10,6 +11,7 @@ zle -N clear-ls-all
 clear-tree-2() {
     clear
     tree -L 2
+    zle reset-prompt
 }
 zle -N clear-tree-2
 
@@ -18,6 +20,7 @@ zle -N clear-tree-2
 clear-tree-3() {
     clear
     tree -L 3
+    zle reset-prompt
 }
 zle -N clear-tree-3
 
@@ -28,11 +31,22 @@ print-current-date() {
 }
 zle -N print-current-date
 
+
 # prints the current Unix timestamp
 print-unix-timestamp() {
   LBUFFER+=$(date +%s)
 }
 zle -N print-unix-timestamp
+
+
+# git status
+git-status() {
+    clear
+    git status
+    zle reset-prompt
+}
+zle -N git-status
+
 
 # appends the clipboard contents to the buffer
 vi-append-clip-selection() {
@@ -42,11 +56,13 @@ vi-append-clip-selection() {
 }
 zle -N vi-append-clip-selection
 
+
 bindkey '^K' clear-ls-all
 bindkey '^J' clear-tree-2
 bindkey '^H' clear-tree-3
 bindkey '^T' print-current-date
 bindkey '^[^T' print-unix-timestamp
+bindkey '^G' git-status
 
 # bind for all, incl. VIM mode
 bindkey -a "^O" copybuffer
