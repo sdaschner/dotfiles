@@ -101,7 +101,7 @@ alias gcob='git checkout -b'
 alias gg='git graph'
 alias gsts='git stash save'
 alias grget='git remote get-url origin'
-alias gpr='hub pull-request'
+alias gpr='hub pull-request -b $(git_main_branch)'
 alias gci='hub issue create'
 alias hcl='hub clone'
 
