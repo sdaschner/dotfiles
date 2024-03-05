@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+
+# for renaming my plain-text presentation slides, will end up in slide001, slide002, ...
+
+ls slide* | cat -n | xargs -L1 bash -c 'mv -vn $1 slide$(printf '%03d' $0).tmp'
+ls slide* | xargs -L1 bash -c 'mv -vn $0 ${0%%.tmp}'
