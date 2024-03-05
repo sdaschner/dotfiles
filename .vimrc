@@ -11,6 +11,7 @@ set title
 set ruler
 set et
 set number relativenumber
+set scrolloff=4
 set incsearch
 set hlsearch
 set autoread
@@ -35,6 +36,9 @@ syntax on
 " see if has implications
 set noesckeys
 
+" configure netrw explorer
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 " Vundle
 "<<<<<<<<<<<<<<<<<<<< 
@@ -46,6 +50,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'mbbill/undotree'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'wellle/context.vim'
 
 " UltiSnips for completion / templating
 Plugin 'SirVer/ultisnips'
@@ -68,7 +76,31 @@ filetype plugin indent on
 " something messes up this setting in the plugins
 set expandtab
 
-
+" fixes context ident for Markdown (context.vim)
+function MyIndent(line)
+    if &ft == 'markdown'
+        " some custom implementation for markdown
+        let indent = indent(a:line)
+        if indent < 0
+            return [indent, indent]
+        endif
+        let line = getline(a:line)
+        let headings = match(line, '^*\+\zs\s')+1
+        if headings <= 0
+            let headings = match(line, '^#\+\zs\s')+1
+            if headings <= 0
+                let headings = 5
+            endif
+        endif
+        return [indent+headings, indent]
+    else
+        " fall back to default implementation
+        let indent = indent(a:line)
+        return [indent, indent]
+    endif
+endfunction
+let g:Context_indent = funcref('MyIndent')
+let g:context_skip_regex = '^\s*$'
 
 let mapleader = "\<Space>"
 
@@ -118,7 +150,7 @@ nmap <leader>bl :ls<CR>
 " toggles the paste mode
 nmap <C-p> :set paste!<CR>
 " toggles word wrap
-nmap <C-w> :set wrap! linebreak<CR>
+nmap <leader>w :set wrap! linebreak<CR>
 " toggles spell checking
 nmap <C-]> :set spell! spelllang=en_us<CR>
 " opens the last buffer
@@ -126,13 +158,17 @@ nnoremap <leader><leader> <C-^>
 " adds a line of <
 nmap <leader>a :normal 20i<<CR>
 " makes Ascii art font
-nmap <leader>F :.!toilet -w 200 -f standard<CR>
-nmap <leader>f :.!toilet -w 200 -f small<CR>
+nmap <leader>2 :.!toilet -w 200 -f standard<CR>
+nmap <leader>3 :.!toilet -w 200 -f small<CR>
 " makes Ascii border
 nmap <leader>1 :.!toilet -w 200 -f term -F border<CR>
 " capitalize titles
 nmap <leader>c :.!capitalize-title -<CR>
 vnoremap <leader>c :.!capitalize-title -<CR>
+" open netrw/fzf/search
+nmap <leader>x :Explore<CR>
+nmap <leader>n :Files<CR>
+nmap <leader>f :Rg<CR>
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
